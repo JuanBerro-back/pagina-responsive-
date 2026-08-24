@@ -19,7 +19,7 @@ canvas {
 	height: 552px;
 	width: 422px;
 	display: block;
-	background: url(https://i.imgur.com/Y0BMP.png) top left;
+	background: url(../img/bg.png) top left;
 }
 
 #scoreBoard {
@@ -30,7 +30,7 @@ canvas {
 	top: -3px;
 	left: 0;
 	z-index: -1;	
-	border-image: url(https://i.imgur.com/5BBsR.png) 100 5 round;
+	border-image: url(../img/border.png) 100 5 round;
 }
 
 #scoreBoard p {
@@ -70,7 +70,7 @@ h3 a {color: #5a5816}
 .button {
 	width: 105px;
 	height: 31px;
-	background: url(https://i.imgur.com/2WEhF.png) 0 0 no-repeat;
+	background: url(../img/sprite.png) 0 0 no-repeat;
 	display: block;
 	color:  #000;
 	font-size: 12px;
@@ -90,7 +90,7 @@ h3 a {color: #5a5816}
 .info .key {
 	width: 16px;
 	height: 16px;
-	background: url(https://i.imgur.com/2WEhF.png) no-repeat;
+	background: url(../img/sprite.png) no-repeat;
 	text-indent: -9999px;
 	display: inline-block;
 }
