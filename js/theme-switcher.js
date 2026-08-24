@@ -164,9 +164,11 @@
     setText("#camino-combate .crossy-result-card h3", theme === "jojo" ? "¡ORA ORA ORA!" : "¡Alto en el camino!");
     const crossyGame = document.getElementById("crossyGameWrap");
     const jojoGame = document.getElementById("jojoGameWrap");
-    if (crossyGame && jojoGame) {
-      crossyGame.hidden = theme === "jojo";
+    const frierenGame = document.getElementById("frierenGameWrap");
+    if (crossyGame && jojoGame && frierenGame) {
+      crossyGame.hidden = theme !== "kill";
       jojoGame.hidden = theme !== "jojo";
+      frierenGame.hidden = theme !== "frieren";
     }
     window.dispatchEvent(new CustomEvent("battle-theme-change", { detail: { theme } }));
     if (theme === "jojo") document.querySelector('[data-target="sceneDioOverdrive"]')?.click();

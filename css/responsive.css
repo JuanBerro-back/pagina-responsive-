@@ -2211,7 +2211,7 @@ a { color: var(--accent2); }
 .crossy-btn-grid button {
   border-radius: 0;
 }
-.crossy-game-container[hidden], .jojo-game-container[hidden] { display: none; }
+.crossy-game-container[hidden], .jojo-game-container[hidden], .frieren-game-container[hidden] { display: none; }
 .jojo-game-container {
   max-width: 960px;
   margin: 2.5rem auto 0;
@@ -2237,6 +2237,28 @@ a { color: var(--accent2); }
 }
 .jojo-game-fallback { margin-top: 0.9rem; text-align: center; }
 .jojo-game-fallback a { color: #d9b2ff; }
+.frieren-game-container {
+  max-width: 960px;
+  margin: 2.5rem auto 0;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: #102021;
+  border: 3px solid #c9a76b;
+  outline: 8px solid #496d62;
+  outline-offset: 8px;
+  box-shadow: 14px 14px 0 #0b1415, 0 0 45px rgba(145, 185, 161, 0.3);
+}
+.frieren-game-heading { text-align: center; margin-bottom: 1rem; }
+.frieren-game-heading h3 { color: #c9a76b; margin: 0.75rem 0 0.35rem; }
+.frieren-game-heading p, .frieren-game-fallback { color: var(--tinta-muted); font-size: 0.9rem; }
+.frieren-game-container iframe {
+  display: block;
+  width: 100%;
+  height: clamp(420px, 60vw, 550px);
+  border: 1px solid rgba(201, 167, 107, 0.65);
+  background: #0b1415;
+}
+.frieren-game-fallback { margin-top: 0.9rem; text-align: center; }
+.frieren-game-fallback a { color: #c9a76b; }
 
 @media (max-width: 640px) {
   .section { content-visibility: auto; contain-intrinsic-size: 600px; }
@@ -2255,6 +2277,12 @@ a { color: var(--accent2); }
     box-shadow: 8px 8px 0 #161026, 0 0 28px rgba(124, 40, 216, 0.32);
   }
   .jojo-game-container iframe { height: min(430px, 110vw); min-height: 300px; }
+  .frieren-game-container {
+    outline-width: 5px;
+    outline-offset: 5px;
+    box-shadow: 8px 8px 0 #0b1415, 0 0 28px rgba(145, 185, 161, 0.25);
+  }
+  .frieren-game-container iframe { height: min(430px, 110vw); }
   .theme-controls { align-items: stretch; }
   .theme-button, .dio-upload { flex: 1 1 auto; text-align: center; }
   .dio-preview { right: 0.5rem; bottom: -4.5rem; }
