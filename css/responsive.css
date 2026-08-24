@@ -1038,7 +1038,13 @@ a:hover { color: var(--accent1); }
   opacity: 0;
 }
 .global-slash-overlay.is-slashing {
-  animation: globalAnimeSlashCut 0.4s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+  animation: fantasyClouds 1.05s ease-in-out forwards;
+}
+@keyframes fantasyClouds {
+  0% { opacity: 0; transform: scaleX(0.2); background: radial-gradient(ellipse at 15% 50%, #eef6f0 0 18%, transparent 45%), radial-gradient(ellipse at 85% 50%, #d9e8df 0 18%, transparent 45%); }
+  35% { opacity: 1; transform: scaleX(1.1); background: radial-gradient(ellipse at 35% 50%, #eef6f0 0 30%, transparent 58%), radial-gradient(ellipse at 65% 50%, #d9e8df 0 30%, transparent 58%); }
+  65% { opacity: 1; transform: scaleX(1); background: radial-gradient(ellipse at 50% 50%, #eef6f0 0 45%, transparent 70%), radial-gradient(ellipse at 50% 55%, #d9e8df 0 45%, transparent 72%); }
+  100% { opacity: 0; transform: scaleX(1.35); background: radial-gradient(ellipse at 50% 50%, transparent 0 30%, rgba(238, 246, 240, 0.9) 45%, transparent 76%); }
 }
 @keyframes globalAnimeSlashCut {
   0% {
@@ -2115,7 +2121,7 @@ a { color: var(--accent2); }
   background: var(--accent1);
   border-color: var(--accent1);
 }
-#dioImage { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+#frierenImage { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .dio-upload { border-color: var(--accent2); color: var(--accent2); }
 .dio-preview {
   position: absolute;

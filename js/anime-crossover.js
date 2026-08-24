@@ -55,11 +55,11 @@
       { text: "ドンッ！", sub: "IMPACT CUT!", color: "#00d2b4" }
     ];
 
-    // Función universal para disparar corte de escena en pantalla completa
+    // Transición de nubes para cruzar entre universos.
     function triggerGlobalSceneSlash() {
       playAnimeSlashSound();
 
-      // 1. Efecto de corte diagonal en pantalla completa
+      // 1. Nubes que cubren y despejan el horizonte.
       if (globalSlashOverlay) {
         globalSlashOverlay.classList.remove("is-slashing");
         void globalSlashOverlay.offsetWidth;
@@ -67,7 +67,7 @@
         setTimeout(() => globalSlashOverlay.classList.remove("is-slashing"), 450);
       }
 
-      // 2. Onomatopeya Kanji Flotante
+      // 2. Mensaje breve de transición.
       if (globalKanjiFx) {
         const randomKanji = kanjiList[Math.floor(Math.random() * kanjiList.length)];
         globalKanjiFx.innerHTML = `<span class="kanji-main" style="color: ${randomKanji.color}">${randomKanji.text}</span><span class="kanji-sub">${randomKanji.sub}</span>`;

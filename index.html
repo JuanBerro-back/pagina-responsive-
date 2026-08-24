@@ -62,7 +62,7 @@
 
     <!-- Banner lateral ilustrado -->
     <div class="btu-lapp">
-      <div class="btu-lapp-lyric">«La vida no es la que uno vivió, sino la que recuerda»</div>
+      <div class="btu-lapp-lyric" id="bannerLyric">«No pierdas tu camino»</div>
       <div class="btu-lapp-texture"></div>
       <div class="btu-lapp-back"></div>
       <div class="btu-lapp-front"></div>
@@ -78,15 +78,15 @@
     <!-- Banner superior con tipografía grunge y guía rápida -->
     <div class="btu-banner">
       <div class="btu-banner-texture" aria-hidden="true"></div>
-      <div class="btu-banner-name">
+      <div class="btu-banner-name" id="bannerName">
         ACADEMIA HONNOUJI · TOKYO · 2013
         <b>Kill la Kill</b>
       </div>
 
       <div class="btu-guidebook">
         <div class="btu-guidebook-name">
-          <span>TRIGGER</span>
-          <span>Guía de combate</span>
+          <span id="guideBrand">TRIGGER</span>
+          <span id="guideTitle">Guía de combate</span>
         </div>
         <div class="btu-guidebook-links">
           <a href="#biografia">Rebelión</a>
@@ -120,18 +120,18 @@
         <button class="theme-button is-active" type="button" data-theme-choice="kill" aria-pressed="true">Kill la Kill</button>
         <button class="theme-button" type="button" data-theme-choice="jojo" aria-pressed="false">JoJo's</button>
         <button class="theme-button" type="button" data-theme-choice="frieren" aria-pressed="false">Frieren</button>
-        <label class="dio-upload" for="dioImage">Cargar imagen de Dio</label>
-        <input id="dioImage" type="file" accept="image/*">
-        <div class="dio-preview" id="dioPreview" hidden>
-          <img id="dioPreviewImage" alt="Imagen personalizada de Dio">
+        <label class="dio-upload" for="frierenImage">Cargar imagen de Frieren</label>
+        <input id="frierenImage" type="file" accept="image/*">
+        <div class="dio-preview" id="frierenPreview" hidden>
+          <img id="frierenPreviewImage" alt="Imagen personalizada de Frieren">
         </div>
       </div>
     </div>
 
     <div class="hero-stats container">
-        <div class="stat reveal"><span class="stat-num" data-count="24">0</span><span class="stat-label">episodios de acción</span></div>
-        <div class="stat reveal"><span class="stat-num" data-count="4">0</span><span class="stat-label">estrellas Goku</span></div>
-        <div class="stat reveal"><span class="stat-num" data-count="1">0</span><span class="stat-label">tijera escarlata</span></div>
+        <div class="stat reveal"><span class="stat-num" id="statOne" data-count="24">0</span><span class="stat-label" id="statLabelOne">episodios de acción</span></div>
+        <div class="stat reveal"><span class="stat-num" id="statTwo" data-count="4">0</span><span class="stat-label" id="statLabelTwo">estrellas Goku</span></div>
+        <div class="stat reveal"><span class="stat-num" id="statThree" data-count="1">0</span><span class="stat-label" id="statLabelThree">tijera escarlata</span></div>
     </div>
   </section>
 
@@ -311,7 +311,7 @@
 
       <div class="container">
         <div class="anime-header reveal">
-          <p class="eyebrow anime-eyebrow" id="animeEyebrow">⚡ Archivo de combate ⚡</p>
+          <p class="eyebrow anime-eyebrow" id="animeEyebrow">Archivo de combate</p>
           <h2 class="anime-main-title" id="animeTitle">KILL LA KILL <span class="anime-vs">×</span> FIBRAS VIVAS</h2>
           <p class="anime-subtitle" id="animeSubtitle">
             Explora las escenas, personajes y poderes que hacen de la rebelión textil una batalla inolvidable.
@@ -322,15 +322,15 @@
         <div class="scene-switcher-nav reveal" role="tablist" aria-label="Cortes de escena">
           <button class="scene-cut-btn is-active" data-target="sceneKillLaKill" role="tab" aria-selected="true">
             <span class="scene-badge">ACTO I</span>
-            <span class="scene-btn-title">🗡️ Kill la Kill (Ryuko & Fibras Vivas)</span>
+            <span class="scene-btn-title">Kill la Kill (Ryuko y Fibras Vivas)</span>
           </button>
           <button class="scene-cut-btn" data-target="sceneSteelBallRun" role="tab" aria-selected="false">
             <span class="scene-badge">ACTO II</span>
-            <span class="scene-btn-title">🐎 Steel Ball Run (Johnny & Gyro Zeppeli)</span>
+            <span class="scene-btn-title">Steel Ball Run (Johnny y Gyro Zeppeli)</span>
           </button>
           <button class="scene-cut-btn" data-target="sceneDioOverdrive" role="tab" aria-selected="false">
             <span class="scene-badge">ACTO III</span>
-            <span class="scene-btn-title">⏱️ DIO Overdrive (The World)</span>
+            <span class="scene-btn-title">DIO Overdrive (The World)</span>
           </button>
         </div>
 
@@ -365,11 +365,11 @@
 
                 <!-- Tarjetas de Personajes de Kill la Kill -->
                 <div class="klk-chars-section">
-                  <h4 class="klk-subhead">🗡️ Personajes Principales de Kill la Kill</h4>
+                  <h4 class="klk-subhead">Personajes principales de Kill la Kill</h4>
                   <div class="klk-chars-grid">
                     <div class="klk-char-card is-selected">
                       <div class="char-header">
-                        <span class="char-icon">🔴</span>
+                        <span class="char-icon" aria-hidden="true"></span>
                         <h5>Ryuko Matoi (纏 流子)</h5>
                       </div>
                       <p class="char-role">Protagonista · Tijera Escarlata · Kamui Senketsu</p>
@@ -378,7 +378,7 @@
 
                     <div class="klk-char-card">
                       <div class="char-header">
-                        <span class="char-icon">⚪</span>
+                        <span class="char-icon" aria-hidden="true"></span>
                         <h5>Satsuki Kiryūin (鬼龍院 皐月)</h5>
                       </div>
                       <p class="char-role">Presidenta del Consejo · Kamui Junketsu · Espada Bakuzan</p>
@@ -387,7 +387,7 @@
 
                     <div class="klk-char-card">
                       <div class="char-header">
-                        <span class="char-icon">🟡</span>
+                        <span class="char-icon" aria-hidden="true"></span>
                         <h5>Mako Mankanshoku (満艦飾 マコ)</h5>
                       </div>
                       <p class="char-role">Capitana Club de Lucha · Uniforme Goku 2-Estrellas</p>
@@ -396,7 +396,7 @@
 
                     <div class="klk-char-card">
                       <div class="char-header">
-                        <span class="char-icon">⭐</span>
+                        <span class="char-icon" aria-hidden="true"></span>
                         <h5>Los Cuatro Reyes Celestiales (四天王)</h5>
                       </div>
                       <p class="char-role">Elite Four · Uniformes Goku 3-Estrellas</p>
@@ -405,7 +405,7 @@
 
                     <div class="klk-char-card">
                       <div class="char-header">
-                        <span class="char-icon">💜</span>
+                        <span class="char-icon" aria-hidden="true"></span>
                         <h5>Ragyo Kiryūin & Nui Harime</h5>
                       </div>
                       <p class="char-role">Revocs Corporation · Fibras Vivas Primarias</p>
@@ -417,19 +417,19 @@
                 <!-- Glosario y Conceptos Clave de Kill la Kill -->
                 <div class="scene-features">
                   <div class="scene-feat-card">
-                    <h4>⚔️ Tijera Rending (片断ちバサミ)</h4>
+                    <h4>Tijera Rending (片断ちバサミ)</h4>
                     <p>Las dos mitades (Roja de Ryuko y Púrpura de Nui) creadas por Isshin Matoi. Al unirse rompen las defensas moleculares de las Fibras Vivas.</p>
                   </div>
                   <div class="scene-feat-card">
-                    <h4>👗 Kamui: Senketsu & Junketsu</h4>
+                    <h4>Kamui: Senketsu y Junketsu</h4>
                     <p>Prendas formadas 100% por Fibras Vivas conscientes que consumen sangre del usuario para desplegar trasformaciones como <em>Senketsu Shippu</em>.</p>
                   </div>
                   <div class="scene-feat-card">
-                    <h4>💥 Sen'i Sōshitsu! (戦維喪失)</h4>
+                    <h4>Sen'i Sōshitsu! (戦維喪失)</h4>
                     <p>El icónico grito de victoria donde el filo de la tijera despoja al rival de sus fibras enemigas y restaura su forma humana.</p>
                   </div>
                   <div class="scene-feat-card">
-                    <h4>⭐ Uniformes Goku (極制服)</h4>
+                    <h4>Uniformes Goku (極制服)</h4>
                     <p>Ropas jerárquicas de 1 a 3 Estrellas potenciadas con 10%-30% de fibras vivas, que otorgan habilidades superhumanas a la elite estudiantil.</p>
                   </div>
                 </div>
@@ -447,7 +447,7 @@
             <div class="scene-grid">
               <div class="scene-visual sbr-visual">
                 <div class="scene-visual-art">
-                  <div class="sbr-spin-art">🌀</div>
+                  <div class="sbr-spin-art" aria-hidden="true"></div>
                   <div class="sbr-kanji-bg" aria-hidden="true">黄金長方形</div>
                   <span class="sbr-tag">HIROHIKO ARAKI · PART 7</span>
                 </div>
@@ -465,12 +465,12 @@
 
                 <div class="scene-features">
                   <div class="scene-feat-card">
-                    <h4>✨ El Rectángulo Dorado</h4>
+                    <h4>El Rectángulo Dorado</h4>
                     <p>La proporción áurea de la naturaleza (1:1.618) convertida en energía rotacional infinita capaz de
                       traspasar dimensiones.</p>
                   </div>
                   <div class="scene-feat-card">
-                    <h4>🐎 Stand: Tusk Act 4</h4>
+                    <h4>Stand: Tusk Act 4</h4>
                     <p>La evolución máxima del poder de Johnny impulsada por el galope de su caballo en sintonía con la
                       rotación perfecta.</p>
                   </div>
@@ -490,7 +490,7 @@
             <div class="scene-grid">
               <div class="scene-visual climax-visual">
                 <div class="scene-visual-art">
-                  <div class="climax-butterfly-art">⏱️🩸</div>
+                  <div class="climax-butterfly-art" aria-hidden="true"></div>
                   <div class="climax-kanji-bg" aria-hidden="true">ザ・ワールド</div>
                   <span class="climax-tag">DIO · STAND SUPREMO</span>
                 </div>
@@ -506,11 +506,11 @@
 
                 <div class="scene-features">
                   <div class="scene-feat-card">
-                    <h4>⏱️ The World</h4>
+                    <h4>The World</h4>
                     <p>El tiempo se detiene. Solo la voluntad de Jotaro puede atravesar ese silencio.</p>
                   </div>
                   <div class="scene-feat-card">
-                    <h4>🩸 DIO Brando</h4>
+                    <h4>DIO Brando</h4>
                     <p>Un vampiro obsesionado con vencer al destino y dominar el mundo desde las sombras.</p>
                   </div>
                 </div>

@@ -1,8 +1,8 @@
 (function themeSwitcher() {
   const buttons = document.querySelectorAll("[data-theme-choice]");
-  const fileInput = document.getElementById("dioImage");
-  const preview = document.getElementById("dioPreview");
-  const previewImage = document.getElementById("dioPreviewImage");
+  const fileInput = document.getElementById("frierenImage");
+  const preview = document.getElementById("frierenPreview");
+  const previewImage = document.getElementById("frierenPreviewImage");
   const fx = document.getElementById("globalKanjiFx");
 
   const content = {
@@ -28,7 +28,12 @@
       gameIntro: "Ayuda a Ryuko a cruzar la academia esquivando vehículos. Usa las flechas del teclado (o WASD) y los controles en pantalla.",
       guide: ["Rebelión", "Batalla", "Uniformes", "JoJo's", "Fibras vivas", "Juego 3D"],
       drawerQuote: "«No pierdas tu camino.»",
-      sceneButtons: ["🗡️ Kill la Kill (Ryuko & Fibras Vivas)", "🌀 Steel Ball Run (Johnny & Gyro)", "⏱️ DIO Overdrive (The World)"],
+      bannerName: "ACADEMIA HONNOUJI · TOKYO · 2013",
+      bannerTitle: "Kill la Kill",
+      guideBrand: "TRIGGER",
+      guideTitle: "Guía de combate",
+      stats: [[24, "episodios de acción"], [4, "estrellas Goku"], [1, "tijera escarlata"]],
+      sceneButtons: ["Kill la Kill (Ryuko y Fibras Vivas)", "Steel Ball Run (Johnny y Gyro)", "DIO Overdrive (The World)"],
       scenePrimary: ["Fibras Vivas · Kamui Senketsu · Tijera Rending", "Kill la Kill: La Rebelión Textil de la Tijera Escarlata", "Una batalla de tijeras, uniformes y voluntad contra el sistema que viste al mundo."]
     },
     jojo: {
@@ -51,9 +56,14 @@
       quote: "«Yare yare daze.»",
       gameTitle: "Batalla de Stands 3D",
       gameIntro: "Ayuda a Jotaro a cruzar las calles de El Cairo esquivando vehículos. Usa las flechas del teclado (o WASD) y los controles en pantalla.",
-      guide: ["El destino", "Sangre Joestar", "Stands", "Kill la Kill", "The World", "Juego 3D"],
+      guide: ["El destino", "Sangre Joestar", "Stands", "JoJo's", "The World", "Juego 3D"],
       drawerQuote: "«Yare yare daze.»",
-      sceneButtons: ["🗡️ Kill la Kill (Ryuko & Fibras Vivas)", "🌀 Steel Ball Run (Johnny & Gyro)", "⏱️ DIO Overdrive (The World)"],
+      bannerName: "EL CAIRO · EGIPTO · 1988",
+      bannerTitle: "JoJo's Bizarre Adventure",
+      guideBrand: "STARDUST CRUSADERS",
+      guideTitle: "Guía de Stands",
+      stats: [[3, "segundos detenidos"], [2, "Stands enfrentados"], [1, "destino Joestar"]],
+      sceneButtons: ["Kill la Kill (Ryuko y Fibras Vivas)", "Steel Ball Run (Johnny y Gyro)", "DIO Overdrive (The World)"],
       scenePrimary: ["Stand: Star Platinum · The World", "Jotaro Kujo: La voluntad que atraviesa el tiempo", "DIO desafía a los Joestar con The World, un Stand capaz de congelar el tiempo y convertir cada segundo en una amenaza."]
     },
     frieren: {
@@ -76,9 +86,14 @@
       quote: "«Qué pérdida de tiempo tan bonita.»",
       gameTitle: "Camino mágico 3D",
       gameIntro: "Ayuda a Frieren a cruzar el bosque esquivando obstáculos. Usa las flechas del teclado (o WASD) y los controles en pantalla.",
-      guide: ["El camino", "Memorias", "Hechizos", "Kill la Kill", "Después del viaje", "Juego 3D"],
+      guide: ["El camino", "Memorias", "Hechizos", "Frieren", "Después del viaje", "Juego 3D"],
       drawerQuote: "«Los recuerdos hacen que el tiempo tenga sentido.»",
-      sceneButtons: ["🌿 Frieren (La maga elfa)", "🪄 Fern (La aprendiz)", "⚔️ Stark (El guerrero)"],
+      bannerName: "CONTINENTE · DESPUÉS DEL VIAJE",
+      bannerTitle: "Frieren",
+      guideBrand: "MAGIA ANTIGUA",
+      guideTitle: "Cuaderno de viaje",
+      stats: [[1000, "años de memoria"], [3, "compañeros de viaje"], [1, "hechizo perdido"]],
+      sceneButtons: ["Frieren (La maga elfa)", "Fern (La aprendiz)", "Stark (El guerrero)"],
       scenePrimary: ["Magia antigua · Hechizos · Memoria", "Frieren: La maga que continúa el viaje", "Frieren viaja entre bosques y ruinas buscando hechizos, mientras aprende que cada encuentro deja una huella.",],
       gameMode: "frieren"
     }
@@ -107,6 +122,9 @@
     });
 
     setText(".hero .eyebrow", selected.heroEyebrow);
+    setText("#bannerName", `${selected.bannerName}<b>${selected.bannerTitle}</b>`);
+    setText("#guideBrand", selected.guideBrand);
+    setText("#guideTitle", selected.guideTitle);
     setText(".hero-title", selected.heroTitle);
     setText(".hero-sub", selected.heroSub);
     setText("#bioEyebrow", selected.bioEyebrow);
@@ -116,6 +134,9 @@
     setText("#animeSubtitle", selected.animeSubtitle);
     setMany(".btu-drawer-list .drawer-text", selected.navigation);
     setMany(".scene-btn-title", selected.sceneButtons);
+    document.querySelectorAll(".scene-cut-btn").forEach((button, index) => {
+      button.hidden = theme === "jojo" ? index !== 2 : index !== 0;
+    });
     setText("#sceneKillLaKill .scene-pill", selected.scenePrimary[0]);
     setText("#sceneKillLaKill .scene-heading", selected.scenePrimary[1]);
     setText("#sceneKillLaKill .scene-lead", selected.scenePrimary[2]);
@@ -130,6 +151,12 @@
     setText("#camino-combate h2", selected.gameTitle);
     setText("#camino-combate .section-intro", selected.gameIntro);
     setText("#camino-combate .score-label", theme === "jojo" ? "Stand Power:" : theme === "frieren" ? "Mana:" : "Puntaje:");
+    selected.stats.forEach(([number, label], index) => {
+      const statNumber = document.querySelector(`#stat${["One", "Two", "Three"][index]}`);
+      if (statNumber) { statNumber.dataset.count = number; statNumber.textContent = number; }
+      setText(`#statLabel${["One", "Two", "Three"][index]}`, label);
+    });
+    setText("#bannerLyric", selected.drawerQuote);
     setText("#camino-combate .crossy-result-card h3", theme === "jojo" ? "¡ORA ORA ORA!" : "¡Alto en el camino!");
     const crossyGame = document.getElementById("crossyGameWrap");
     const jojoGame = document.getElementById("jojoGameWrap");
@@ -143,6 +170,11 @@
 
     if (theme === "jojo" && announce) {
       fx.innerHTML = "<strong>KONO DIO DA!</strong><span>THE WORLD</span>";
+      fx.classList.remove("is-active");
+      void fx.offsetWidth;
+      fx.classList.add("is-active");
+    } else if (theme === "frieren" && announce) {
+      fx.innerHTML = "<strong>SEMPITERNAL</strong><span>EL VIAJE CONTINÚA</span>";
       fx.classList.remove("is-active");
       void fx.offsetWidth;
       fx.classList.add("is-active");
