@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kill la Kill: personajes, poderes y escenas de una rebelión contra las fibras vivas.">
+  <title>Kill la Kill · Battle Archive</title>
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Archivo:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link href="css/responsive.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <!-- Superposición de Corte de Escena Manga Global (Scene Cut / Slash FX) -->
+  <div class="global-slash-overlay" id="globalSlashOverlay" aria-hidden="true"></div>
+  <div class="global-kanji-fx" id="globalKanjiFx" aria-live="assertive"></div>
+
+  <!-- Cursor personalizado interactivo -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- ============ SKIN HEADER DE COMBATE ============ -->
+  <header class="btu-header-wrap" id="inicio">
+    <input type="checkbox" id="btu-tog">
+    <label for="btu-tog" class="btu-tog-but" aria-label="Abrir panel lateral">
+      <div>menú</div>
+    </label>
+
+    <!-- Menú desplegable lateral (Drawer) con enlaces completos -->
+    <nav class="btu-drawer" id="menuDrawer" aria-label="Menú de navegación lateral">
+      <div class="btu-drawer-header">
+        <span class="btu-drawer-tag">NAVEGACIÓN</span>
+        <h3>Battle Archive</h3>
+        <label for="btu-tog" class="btu-drawer-close" aria-label="Cerrar menú">✕</label>
+      </div>
+      <ul class="btu-drawer-list">
+        <li><a href="#inicio"><span class="drawer-num">01</span><span class="drawer-text">Inicio</span></a></li>
+          <li><a href="#portal-academy"><span class="drawer-num">02</span><span class="drawer-text">Academia Honnouji</span></a></li>
+        <li><a href="#biografia"><span class="drawer-num">03</span><span class="drawer-text">Biografía</span></a></li>
+        <li><a href="#linea-tiempo"><span class="drawer-num">04</span><span class="drawer-text">Cronología</span></a>
+        </li>
+        <li><a href="#obras"><span class="drawer-num">05</span><span class="drawer-text">Obras Maestras</span></a></li>
+        <li><a href="#anime-crossover"><span class="drawer-num">06</span><span class="drawer-text">Kill la Kill × JoJo
+              (SBR)</span><span class="drawer-badge">ÉPICO</span></a></li>
+        <li><a href="#video"><span class="drawer-num">07</span><span class="drawer-text">Fibras vivas</span></a></li>
+          <li><a href="#camino-combate"><span class="drawer-num">08</span><span class="drawer-text">Camino 3D
+              (Minijuego)</span></a></li>
+      </ul>
+      <div class="btu-drawer-quote">
+        «El mundo era tan reciente, que muchas cosas carecían de nombre...»
+      </div>
+    </nav>
+
+    <!-- Banner lateral ilustrado -->
+    <div class="btu-lapp">
+      <div class="btu-lapp-lyric">«La vida no es la que uno vivió, sino la que recuerda»</div>
+      <div class="btu-lapp-texture"></div>
+      <div class="btu-lapp-back"></div>
+      <div class="btu-lapp-front"></div>
+    </div>
+
+    <!-- Texturas esquinas grunge -->
+    <div class="btu-topright" aria-hidden="true"></div>
+    <div class="btu-topleft" aria-hidden="true"></div>
+
+    <!-- Barra de navegación superior rápida -->
+
+
+    <!-- Banner superior con tipografía grunge y guía rápida -->
+    <div class="btu-banner">
+      <div class="btu-banner-texture" aria-hidden="true"></div>
+      <div class="btu-banner-name">
+        ACADEMIA HONNOUJI · TOKYO · 2013
+        <b>Kill la Kill</b>
+      </div>
+
+      <div class="btu-guidebook">
+        <div class="btu-guidebook-name">
+          <span>TRIGGER</span>
+          <span>Guía de combate</span>
+        </div>
+        <div class="btu-guidebook-links">
+          <a href="#biografia">Rebelión</a>
+          <a href="#linea-tiempo">Batalla</a>
+          <a href="#obras">Uniformes</a>
+          <a href="#anime-crossover">JoJo's</a>
+          <a href="#video">Fibras vivas</a>
+          <a href="#camino-combate">Juego 3D</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ============ HERO con viento ============ -->
+  <section class="hero">
+    <canvas id="wind" aria-hidden="true"></canvas>
+
+    <div class="hero-content container">
+      <p class="eyebrow reveal">Academia Honnouji · Distrito de la élite</p>
+      <h1 class="hero-title reveal">KILL LA <em>KILL</em></h1>
+      <p class="hero-sub reveal">
+        Ryuko Matoi llega con una tijera escarlata para cortar las mentiras, desafiar a la élite y recuperar la verdad sobre su padre.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#biografia">Entrar en combate</a>
+        <a class="btn btn-ghost" href="#anime-crossover">Cambiar universo</a>
+      </div>
+      <div class="theme-controls reveal" aria-label="Selector de universo">
+        <span class="theme-label">UNIVERSO</span>
+        <button class="theme-button is-active" type="button" data-theme-choice="kill" aria-pressed="true">Kill la Kill</button>
+        <button class="theme-button" type="button" data-theme-choice="jojo" aria-pressed="false">JoJo's</button>
+        <label class="dio-upload" for="dioImage">Cargar imagen de Dio</label>
+        <input id="dioImage" type="file" accept="image/*">
+        <div class="dio-preview" id="dioPreview" hidden>
+          <img id="dioPreviewImage" alt="Imagen personalizada de Dio">
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats container">
+        <div class="stat reveal"><span class="stat-num" data-count="24">0</span><span class="stat-label">episodios de acción</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="4">0</span><span class="stat-label">estrellas Goku</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="1">0</span><span class="stat-label">tijera escarlata</span></div>
+    </div>
+  </section>
+
+  <!-- ============ APERTURA INTERACTIVA: ACADEMIA HONNOUJI ============ -->
+  <section class="curtain-section" id="portal-academy">
+    <div class="curtain-grid" id="curtainGrid">
+      <div class="curtain-pane curtain-left">
+        <div class="pane-overlay">
+          <span class="pane-tag">Distrito de la élite</span>
+          <h3 class="pane-title">Academia Honnouji</h3>
+          <p class="pane-desc">Aquí la ropa decide el rango y la rebeldía se paga caro.</p>
+        </div>
+      </div>
+
+      <div class="curtain-middle">
+        <div class="curtain-middle-content">
+          <p class="eyebrow">Fibras vivas</p>
+          <h2 class="curtain-quote">«No pierdas tu camino.»</h2>
+          <p class="curtain-text">
+            Una batalla de tijeras, uniformes y voluntad contra el sistema que viste al mundo.
+          </p>
+          <div class="curtain-actions">
+            <a class="btn btn-primary" href="#biografia">Conocer la rebelión</a>
+            <a class="btn btn-ghost" href="#obras">Ver los uniformes</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="curtain-pane curtain-right">
+        <div class="pane-overlay">
+          <span class="pane-tag">Combate final</span>
+          <h3 class="pane-title">La tijera escarlata</h3>
+          <p class="pane-desc">Romper las fibras vivas exige elegir tu propio camino.</p>
+        </div>
+      </div>
+
+      <div class="curtain-scroll-hint" id="curtainHint">
+        <span>↓ Desliza para entrar en combate</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ============ BIOGRAFÍA ============ -->
+    <section class="section" id="biografia">
+      <div class="container grid grid-2">
+
+        <article class="bio-text reveal">
+          <p class="eyebrow" id="bioEyebrow">La rebelión</p>
+          <h2 id="bioTitle">Ryuko Matoi no se arrodilla</h2>
+          <p id="bioTextOne">Ryuko llega a la Academia Honnouji con una mitad de la Tijera Escarlata y una sola pregunta: quién mató a su padre.</p>
+          <p id="bioTextTwo">Su encuentro con Senketsu despierta un poder que no depende de la jerarquía. Juntos desafían a Satsuki, al Consejo Estudiantil y al imperio textil de Revocs.</p>
+          <p id="bioTextThree">Kill la Kill convierte la ropa en armadura, identidad y campo de batalla. Cada transformación es una elección: vestir el poder sin dejar que el poder te vista.</p>
+        </article>
+
+        <figure class="bio-figure reveal">
+          <div class="bio-frame">
+            <img src="f.jpg" alt="Ilustración de Ryuko Matoi"
+              onerror="this.closest('.bio-frame').classList.add('no-photo'); this.remove();">
+            <div class="bio-fallback" aria-hidden="true">
+              <span class="bio-initials">KLK</span>
+            </div>
+          </div>
+          <figcaption>Una rebelión cosida con acero, sangre y voluntad.</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ============ LÍNEA DE TIEMPO ============ -->
+    <section class="section section-alt" id="linea-tiempo">
+      <div class="container">
+        <p class="eyebrow reveal">Cronología</p>
+        <h2 class="reveal">Una vida para contarla</h2>
+
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <span class="timeline-year">ACTO I</span>
+            <h3>La llegada de Ryuko</h3>
+            <p>Una tijera escarlata y una pregunta abren la rebelión contra la Academia Honnouji.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">ACTO II</span>
+            <h3>Senketsu despierta</h3>
+            <p>Ryuko descubre que un uniforme puede tener voluntad propia y luchar a su lado.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">ACTO III</span>
+            <h3>La élite cae</h3>
+            <p>Los Uniformes Goku dejan de ser símbolos de obediencia y se convierten en armas de libertad.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">ACTO IV</span>
+            <h3>La verdad de Satsuki</h3>
+            <p>La presidenta revela el plan de Ragyo y la guerra contra las Fibras Vivas Primarias.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">CLÍMAX</span>
+            <h3>Sen'i Sōshitsu!</h3>
+            <p>La tijera escarlata corta el control del mundo y devuelve a cada persona su propia elección.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">FINAL</span>
+            <h3>No pierdas tu camino</h3>
+            <p>La rebelión termina, pero la voluntad de vestir tu propia identidad permanece.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">LEGADO</span>
+            <h3>La ropa también habla</h3>
+            <p>Kill la Kill convierte la moda en una declaración de identidad, poder y resistencia.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ OBRAS ============ -->
+    <section class="section" id="obras">
+      <div class="container">
+        <p class="eyebrow reveal">Bibliografía esencial</p>
+        <h2 class="reveal">Sus obras</h2>
+        <p class="section-intro reveal">Las armas, uniformes y personajes que definen la rebelión textil.</p>
+
+        <div class="grid cards-grid">
+
+          <article class="card reveal">
+            <span class="card-year">ARMA</span>
+            <h3>Tijera Escarlata</h3>
+            <p>La mitad de una herramienta creada para cortar las fibras vivas y abrir camino hacia la verdad.</p>
+            <a class="card-link" href="#anime-crossover">Ver ficha →</a>
+          </article>
+
+          <article class="card reveal">
+            <span class="card-year">KAMUI</span>
+            <h3>Senketsu</h3>
+            <p>Un uniforme consciente que se sincroniza con Ryuko para convertir la confianza en fuerza.</p>
+            <a class="card-link" href="#anime-crossover">Ver ficha →</a>
+          </article>
+
+          <article class="card reveal">
+            <span class="card-year">LÍDER</span>
+            <h3>Satsuki Kiryūin</h3>
+            <p>Presidenta de la academia, estratega feroz y rival que conoce el precio de desafiar a su madre.</p>
+            <a class="card-link" href="#anime-crossover">Ver ficha →</a>
+          </article>
+
+          <article class="card reveal">
+            <span class="card-year">ENEMIGA</span>
+            <h3>Ragyo Kiryūin</h3>
+            <p>La directora de Revocs quiere vestir al planeta entero con las fibras vivas primarias.</p>
+            <a class="card-link" href="#anime-crossover">Ver ficha →</a>
+          </article>
+
+          <article class="card reveal">
+            <span class="card-year">ESCENA</span>
+            <h3>Don't Lose Your Way</h3>
+            <p>El pulso musical de una transformación que no pide permiso para existir.</p>
+            <a class="card-link" href="#anime-crossover">Ver ficha →</a>
+          </article>
+
+          <article class="card reveal">
+            <span class="card-year">IDEA</span>
+            <h3>Vestir la libertad</h3>
+            <p>La ropa deja de ser obediencia y se convierte en una forma visible de elegir quién eres.</p>
+            <a class="card-link" href="#anime-crossover">Ver ficha →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KILL LA KILL × STEEL BALL RUN (ANIME & CORTES DE ESCENA) ============ -->
+    <section class="section anime-section" id="anime-crossover">
+      <!-- Efecto de corte diagonal manga y Kanji dinámico -->
+      <div class="scene-slash-overlay" id="sceneSlashOverlay" aria-hidden="true"></div>
+      <div class="kanji-pop-fx" id="kanjiPopFx" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="anime-header reveal">
+          <p class="eyebrow anime-eyebrow" id="animeEyebrow">⚡ Archivo de combate ⚡</p>
+          <h2 class="anime-main-title" id="animeTitle">KILL LA KILL <span class="anime-vs">×</span> FIBRAS VIVAS</h2>
+          <p class="anime-subtitle" id="animeSubtitle">
+            Explora las escenas, personajes y poderes que hacen de la rebelión textil una batalla inolvidable.
+          </p>
+        </div>
+
+        <!-- Selector de Escenas (Cortes de Escena tipo JoJo's) -->
+        <div class="scene-switcher-nav reveal" role="tablist" aria-label="Cortes de escena">
+          <button class="scene-cut-btn is-active" data-target="sceneKillLaKill" role="tab" aria-selected="true">
+            <span class="scene-badge">ACTO I</span>
+            <span class="scene-btn-title">🗡️ Kill la Kill (Ryuko & Fibras Vivas)</span>
+          </button>
+          <button class="scene-cut-btn" data-target="sceneSteelBallRun" role="tab" aria-selected="false">
+            <span class="scene-badge">ACTO II</span>
+            <span class="scene-btn-title">🐎 Steel Ball Run (Johnny & Gyro Zeppeli)</span>
+          </button>
+          <button class="scene-cut-btn" data-target="sceneDioOverdrive" role="tab" aria-selected="false">
+            <span class="scene-badge">ACTO III</span>
+            <span class="scene-btn-title">⏱️ DIO Overdrive (The World)</span>
+          </button>
+        </div>
+
+        <!-- Contenedor de Escenas Dinámicas -->
+        <div class="scene-stage reveal">
+
+          <!-- ESCENA 1: KILL LA KILL (INFORMACIÓN COMPLETA DE KILL LA KILL) -->
+          <article class="scene-panel is-active" id="sceneKillLaKill" role="tabpanel">
+            <div class="scene-grid">
+              <div class="scene-visual klk-visual">
+                <div class="scene-visual-art">
+                  <div class="klk-scissor-art">✂️</div>
+                  <div class="klk-kanji-bg" aria-hidden="true">戦維喪失</div>
+                  <span class="klk-tag">STUDIO TRIGGER · 2013</span>
+                </div>
+                <div class="klk-glow-line"></div>
+                <div class="klk-stats-badge">
+                  <span class="badge-item">24 EPISODIOS</span>
+                  <span class="badge-item">KAZUKI NAKASHIMA</span>
+                  <span class="badge-item">HIROYUKI IMAISHI</span>
+                </div>
+              </div>
+
+              <div class="scene-content">
+                <div class="scene-pill klk-pill">Fibras Vivas · Kamui Senketsu · Tijera Rending</div>
+                <h3 class="scene-heading">Kill la Kill (キルラキル): La Rebelión Textil de la Tijera Escarlata</h3>
+                <p class="scene-lead">
+                  <em>«¡No pierdas tu camino!» (Don't Lose Your Way)</em>. Producida por <strong>Studio Trigger</strong> (2013),
+                  Kill la Kill es una obra maestra de la acción desenfrenada que explora la tiranía del vestuario,
+                  el fascismo estético de la Academia Honnouji y la lucha por la autodeterminación empuñando la Tijera Escarlata.
+                </p>
+
+                <!-- Tarjetas de Personajes de Kill la Kill -->
+                <div class="klk-chars-section">
+                  <h4 class="klk-subhead">🗡️ Personajes Principales de Kill la Kill</h4>
+                  <div class="klk-chars-grid">
+                    <div class="klk-char-card is-selected">
+                      <div class="char-header">
+                        <span class="char-icon">🔴</span>
+                        <h5>Ryuko Matoi (纏 流子)</h5>
+                      </div>
+                      <p class="char-role">Protagonista · Tijera Escarlata · Kamui Senketsu</p>
+                      <p class="char-desc">Estudiante errante que llega a la Academia Honnouji buscando al asesino de su padre. Fusionada con Senketsu, combate a las Fibras Vivas Primarias.</p>
+                    </div>
+
+                    <div class="klk-char-card">
+                      <div class="char-header">
+                        <span class="char-icon">⚪</span>
+                        <h5>Satsuki Kiryūin (鬼龍院 皐月)</h5>
+                      </div>
+                      <p class="char-role">Presidenta del Consejo · Kamui Junketsu · Espada Bakuzan</p>
+                      <p class="char-desc">Líder absoluta de la Academia Honnouji. Con puño de hierro y convicción indomable, oculta un plan rebelde contra el imperio textil de su madre.</p>
+                    </div>
+
+                    <div class="klk-char-card">
+                      <div class="char-header">
+                        <span class="char-icon">🟡</span>
+                        <h5>Mako Mankanshoku (満艦飾 マコ)</h5>
+                      </div>
+                      <p class="char-role">Capitana Club de Lucha · Uniforme Goku 2-Estrellas</p>
+                      <p class="char-desc">La entrañable e hiperactiva mejor amiga de Ryuko. Sus emblemáticos discursos de halógeno rompen la tensión y salvan el espíritu de Ryuko.</p>
+                    </div>
+
+                    <div class="klk-char-card">
+                      <div class="char-header">
+                        <span class="char-icon">⭐</span>
+                        <h5>Los Cuatro Reyes Celestiales (四天王)</h5>
+                      </div>
+                      <p class="char-role">Elite Four · Uniformes Goku 3-Estrellas</p>
+                      <p class="char-desc">Ira Gamagori (Disciplinario), Uzu Sanageyama (Kendo), Nonon Jakuzure (Sinfonía) y Houka Inumuta (Inteligencia), guardianes supremos de la academia.</p>
+                    </div>
+
+                    <div class="klk-char-card">
+                      <div class="char-header">
+                        <span class="char-icon">💜</span>
+                        <h5>Ragyo Kiryūin & Nui Harime</h5>
+                      </div>
+                      <p class="char-role">Revocs Corporation · Fibras Vivas Primarias</p>
+                      <p class="char-desc">La corporación textil global que busca asimilar la biósfera terrestre en el Gran Capullo Estelar (Life Fiber Original).</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Glosario y Conceptos Clave de Kill la Kill -->
+                <div class="scene-features">
+                  <div class="scene-feat-card">
+                    <h4>⚔️ Tijera Rending (片断ちバサミ)</h4>
+                    <p>Las dos mitades (Roja de Ryuko y Púrpura de Nui) creadas por Isshin Matoi. Al unirse rompen las defensas moleculares de las Fibras Vivas.</p>
+                  </div>
+                  <div class="scene-feat-card">
+                    <h4>👗 Kamui: Senketsu & Junketsu</h4>
+                    <p>Prendas formadas 100% por Fibras Vivas conscientes que consumen sangre del usuario para desplegar trasformaciones como <em>Senketsu Shippu</em>.</p>
+                  </div>
+                  <div class="scene-feat-card">
+                    <h4>💥 Sen'i Sōshitsu! (戦維喪失)</h4>
+                    <p>El icónico grito de victoria donde el filo de la tijera despoja al rival de sus fibras enemigas y restaura su forma humana.</p>
+                  </div>
+                  <div class="scene-feat-card">
+                    <h4>⭐ Uniformes Goku (極制服)</h4>
+                    <p>Ropas jerárquicas de 1 a 3 Estrellas potenciadas con 10%-30% de fibras vivas, que otorgan habilidades superhumanas a la elite estudiantil.</p>
+                  </div>
+                </div>
+
+                <div class="scene-quote klk-quote">
+                  <p>«¡No nos vestimos para encajar en el mundo! ¡Nos vestimos para ser nosotros mismos y cortar las cadenas impuestas!»</p>
+                  <cite>— Ryuko Matoi & Studio Trigger</cite>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ESCENA 2: STEEL BALL RUN -->
+          <article class="scene-panel" id="sceneSteelBallRun" role="tabpanel" hidden>
+            <div class="scene-grid">
+              <div class="scene-visual sbr-visual">
+                <div class="scene-visual-art">
+                  <div class="sbr-spin-art">🌀</div>
+                  <div class="sbr-kanji-bg" aria-hidden="true">黄金長方形</div>
+                  <span class="sbr-tag">HIROHIKO ARAKI · PART 7</span>
+                </div>
+                <div class="sbr-glow-line"></div>
+              </div>
+
+              <div class="scene-content">
+                <div class="scene-pill sbr-pill">Stand: Tusk · Golden Spin</div>
+                <h3 class="scene-heading">Johnny Joestar & Gyro: La Carrera Transcontinental</h3>
+                <p class="scene-lead">
+                  A través de 6.000 kilómetros de territorio salvaje en la <strong>Steel Ball Run (1890)</strong>,
+                  Johnny y Gyro descubren que el camino más corto no es una línea recta, sino la espiral dorada del Giro
+                  Infinito.
+                </p>
+
+                <div class="scene-features">
+                  <div class="scene-feat-card">
+                    <h4>✨ El Rectángulo Dorado</h4>
+                    <p>La proporción áurea de la naturaleza (1:1.618) convertida en energía rotacional infinita capaz de
+                      traspasar dimensiones.</p>
+                  </div>
+                  <div class="scene-feat-card">
+                    <h4>🐎 Stand: Tusk Act 4</h4>
+                    <p>La evolución máxima del poder de Johnny impulsada por el galope de su caballo en sintonía con la
+                      rotación perfecta.</p>
+                  </div>
+                </div>
+
+                <div class="scene-quote sbr-quote">
+                  <p>«Lección 5: El camino más corto fue un desvío... Y ese desvío fue nuestro verdadero atajo en este
+                    viaje.»</p>
+                  <cite>— Gyro Zeppeli a Johnny Joestar</cite>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ESCENA 3: EL CLÍMAX DIO OVERDRIVE -->
+          <article class="scene-panel" id="sceneDioOverdrive" role="tabpanel" hidden>
+            <div class="scene-grid">
+              <div class="scene-visual climax-visual">
+                <div class="scene-visual-art">
+                  <div class="climax-butterfly-art">⏱️🩸</div>
+                  <div class="climax-kanji-bg" aria-hidden="true">ザ・ワールド</div>
+                  <span class="climax-tag">DIO · STAND SUPREMO</span>
+                </div>
+                <div class="climax-glow-line"></div>
+              </div>
+
+              <div class="scene-content">
+                <div class="scene-pill climax-pill">Stand Supremo · Tiempo detenido</div>
+                <h3 class="scene-heading">The World: El tiempo se detiene</h3>
+                <p class="scene-lead">
+                  DIO desafía a los Joestar con <strong>The World</strong>, un Stand capaz de congelar el tiempo y convertir cada segundo en una amenaza.
+                </p>
+
+                <div class="scene-features">
+                  <div class="scene-feat-card">
+                    <h4>⏱️ The World</h4>
+                    <p>El tiempo se detiene. Solo la voluntad de Jotaro puede atravesar ese silencio.</p>
+                  </div>
+                  <div class="scene-feat-card">
+                    <h4>🩸 DIO Brando</h4>
+                    <p>Un vampiro obsesionado con vencer al destino y dominar el mundo desde las sombras.</p>
+                  </div>
+                </div>
+
+                <div class="scene-quote climax-quote">
+                  <p>«KONO DIO DA!»</p>
+                  <cite>— El destino de los Joestar</cite>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Indicador To Be Continued estilo JoJo -->
+        <div class="jojo-tobe-wrap">
+          <div class="jojo-tobe-arrow" id="jojoToBeContinued">
+            <span>◄ To Be Continued</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ CITA ============ -->
+    <section class="section quote-band">
+      <div class="container">
+        <blockquote class="big-quote reveal">
+          <p>«No nos vestimos para encajar. Nos vestimos para ser nosotros mismos.»</p>
+          <cite>— Ryuko Matoi</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ VIDEO ============ -->
+    <section class="section section-alt" id="video">
+      <div class="container grid grid-2">
+        <div class="video-text reveal">
+          <p class="eyebrow">Transformación · Combate final</p>
+          <h2>El poder de vestir tu verdad</h2>
+          <p>Las fibras vivas no son solo una armadura. Son memoria, voluntad y una pregunta incómoda: ¿quién decide la forma que debe tener tu vida?</p>
+          <p>Ryuko y Satsuki descubren que la verdadera fuerza aparece cuando dejan de luchar por el uniforme perfecto y luchan por elegir su propio camino.</p>
+        </div>
+
+        <div class="video-wrap reveal">
+          <iframe src="https://www.youtube.com/embed/6p7H7e7y9yA"
+            title="Kill la Kill - Don't Lose Your Way" loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MINIJUEGO 3D: CAMINO DE COMBATE (THREE.JS) ============ -->
+    <section class="section section-alt" id="camino-combate">
+      <div class="container">
+        <p class="eyebrow reveal">Único minijuego</p>
+        <h2 class="reveal">Camino de combate 3D</h2>
+        <p class="section-intro reveal">
+          Ayuda a Ryuko a cruzar la academia esquivando vehículos. Usa las flechas del teclado (o WASD) y los controles en pantalla.
+        </p>
+
+        <div class="crossy-game-container reveal" id="crossyGameWrap" tabindex="0">
+          <canvas class="crossy-canvas" id="crossyCanvas"></canvas>
+
+          <div class="crossy-score-badge">
+            <span class="score-label">Puntaje:</span>
+            <span id="crossyScore">0</span>
+          </div>
+
+          <div class="crossy-controls" id="crossyControls">
+            <div class="crossy-btn-grid">
+              <button id="crossyForward" aria-label="Avanzar">▲</button>
+              <button id="crossyLeft" aria-label="Izquierda">◀</button>
+              <button id="crossyBackward" aria-label="Retroceder">▼</button>
+              <button id="crossyRight" aria-label="Derecha">▶</button>
+            </div>
+          </div>
+
+          <div class="crossy-result-modal" id="crossyResult" hidden>
+            <div class="crossy-result-card">
+              <h3>¡Alto en el camino!</h3>
+              <p>Puntaje alcanzado: <strong id="crossyFinalScore">0</strong> pasos</p>
+              <button class="btn btn-primary" id="crossyRetry">Intentar de nuevo</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="jojo-game-container" id="jojoGameWrap" hidden>
+          <div class="jojo-game-heading">
+            <span class="scene-pill climax-pill">JOJO'S BIZARRE ADVENTURE · FAN GAME</span>
+            <h3>Zombie Mayhem: batalla de Stands</h3>
+            <p>El juego original se abre dentro de este marco cuando eliges el universo JoJo’s.</p>
+          </div>
+          <iframe id="jojoGameFrame" title="Zombie Mayhem, juego de disparos de Elior Tabeka"
+            src="zombie-mayhem-source/app/index.html" loading="lazy" allow="autoplay; fullscreen"
+            referrerpolicy="no-referrer"></iframe>
+            <p class="jojo-game-fallback">¿No carga el juego? <a href="zombie-mayhem-source/app/index.html"
+              target="_blank" rel="noopener">Abrir Zombie Mayhem local en otra pestaña</a>.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-brand">KLK<span class="nav-dot">.</span></p>
+        <p>Archivo de combate de Kill la Kill.</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <ul class="footer-links">
+          <li><a href="#biografia">Rebelión</a></li>
+          <li><a href="#obras">Uniformes</a></li>
+          <li><a href="#anime-crossover">Universos</a></li>
+          <li><a href="#camino-combate">Juego 3D</a></li>
+        </ul>
+      </nav>
+      <p class="footer-credit">Una historia de identidad, estilo y resistencia.</p>
+    </div>
+  </footer>
+
+  <a href="#inicio" class="to-top" id="toTop" aria-label="Volver arriba">↑</a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/crossy-macondo.js"></script>
+  <script src="js/anime-crossover.js"></script>
+  <script src="js/theme-switcher.js"></script>
+</body>
+
+</html>
