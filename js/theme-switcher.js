@@ -28,7 +28,8 @@
       gameIntro: "Ayuda a Ryuko a cruzar la academia esquivando vehículos. Usa las flechas del teclado (o WASD) y los controles en pantalla.",
       guide: ["Rebelión", "Batalla", "Uniformes", "JoJo's", "Fibras vivas", "Juego 3D"],
       drawerQuote: "«No pierdas tu camino.»",
-      sceneButtons: ["🗡️ Kill la Kill (Ryuko & Fibras Vivas)", "🌀 Steel Ball Run (Johnny & Gyro)", "⏱️ DIO Overdrive (The World)"]
+      sceneButtons: ["🗡️ Kill la Kill (Ryuko & Fibras Vivas)", "🌀 Steel Ball Run (Johnny & Gyro)", "⏱️ DIO Overdrive (The World)"],
+      scenePrimary: ["Fibras Vivas · Kamui Senketsu · Tijera Rending", "Kill la Kill: La Rebelión Textil de la Tijera Escarlata", "Una batalla de tijeras, uniformes y voluntad contra el sistema que viste al mundo."]
     },
     jojo: {
       heroEyebrow: "Egipto · 1988 · El destino se acerca",
@@ -52,7 +53,34 @@
       gameIntro: "Ayuda a Jotaro a cruzar las calles de El Cairo esquivando vehículos. Usa las flechas del teclado (o WASD) y los controles en pantalla.",
       guide: ["El destino", "Sangre Joestar", "Stands", "Kill la Kill", "The World", "Juego 3D"],
       drawerQuote: "«Yare yare daze.»",
-      sceneButtons: ["🗡️ Kill la Kill (Ryuko & Fibras Vivas)", "🌀 Steel Ball Run (Johnny & Gyro)", "⏱️ DIO Overdrive (The World)"]
+      sceneButtons: ["🗡️ Kill la Kill (Ryuko & Fibras Vivas)", "🌀 Steel Ball Run (Johnny & Gyro)", "⏱️ DIO Overdrive (The World)"],
+      scenePrimary: ["Stand: Star Platinum · The World", "Jotaro Kujo: La voluntad que atraviesa el tiempo", "DIO desafía a los Joestar con The World, un Stand capaz de congelar el tiempo y convertir cada segundo en una amenaza."]
+    },
+    frieren: {
+      heroEyebrow: "Continente · Después del viaje · Magia antigua",
+      heroTitle: "FRIEREN <em>BEYOND JOURNEY'S END</em>",
+      heroSub: "La maga elfa continúa viajando después de derrotar al Rey Demonio, aprendiendo que una vida larga también está hecha de pequeños encuentros.",
+      bioEyebrow: "La viajera",
+      bioTitle: "La magia de recordar",
+      bio: [
+        "Frieren es una elfa maga que ha vivido más de mil años. Para ella, diez años de aventura parecen un instante, pero la memoria de sus compañeros cambia su forma de mirar el mundo.",
+        "Acompañada por Fern y Stark, recorre caminos, ruinas y pueblos en busca de hechizos mientras aprende a valorar los momentos que antes dejó pasar.",
+        "Su magia no busca espectáculo: observa, espera y comprende. En este universo, una brisa, una flor y una conversación pueden contener más poder que una batalla."
+      ],
+      animeTitle: "FRIEREN <span class=\"anime-vs\">×</span> JOURNEY",
+      animeSubtitle: "Un archivo de hechizos, recuerdos y caminos que continúan mucho después del final de la gran aventura.",
+      navigation: ["El camino", "La viajera", "Después del viaje", "Hechizos", "Selector de universos", "Memorias", "Camino mágico"],
+      curtain: ["Bosque del norte", "El camino continúa", "El mundo cambia despacio cuando tienes siglos para observarlo.", "Magia y memoria", "Una aventura silenciosa entre hierba, viento y hechizos olvidados.", "Ruinas antiguas", "El hechizo perdido", "A veces la magia más valiosa es la que guarda un recuerdo."],
+      timelineTitle: "Después del viaje",
+      cardsTitle: "Magias y compañeros",
+      quote: "«Qué pérdida de tiempo tan bonita.»",
+      gameTitle: "Camino mágico 3D",
+      gameIntro: "Ayuda a Frieren a cruzar el bosque esquivando obstáculos. Usa las flechas del teclado (o WASD) y los controles en pantalla.",
+      guide: ["El camino", "Memorias", "Hechizos", "Kill la Kill", "Después del viaje", "Juego 3D"],
+      drawerQuote: "«Los recuerdos hacen que el tiempo tenga sentido.»",
+      sceneButtons: ["🌿 Frieren (La maga elfa)", "🪄 Fern (La aprendiz)", "⚔️ Stark (El guerrero)"],
+      scenePrimary: ["Magia antigua · Hechizos · Memoria", "Frieren: La maga que continúa el viaje", "Frieren viaja entre bosques y ruinas buscando hechizos, mientras aprende que cada encuentro deja una huella.",],
+      gameMode: "frieren"
     }
   };
 
@@ -71,6 +99,7 @@
   function applyTheme(theme, announce) {
     const selected = content[theme];
     document.body.classList.toggle("theme-jojo", theme === "jojo");
+    document.body.classList.toggle("theme-frieren", theme === "frieren");
     buttons.forEach((button) => {
       const active = button.dataset.themeChoice === theme;
       button.classList.toggle("is-active", active);
@@ -87,6 +116,9 @@
     setText("#animeSubtitle", selected.animeSubtitle);
     setMany(".btu-drawer-list .drawer-text", selected.navigation);
     setMany(".scene-btn-title", selected.sceneButtons);
+    setText("#sceneKillLaKill .scene-pill", selected.scenePrimary[0]);
+    setText("#sceneKillLaKill .scene-heading", selected.scenePrimary[1]);
+    setText("#sceneKillLaKill .scene-lead", selected.scenePrimary[2]);
     setMany(".btu-guidebook-links a", selected.guide);
     setText(".btu-drawer-quote", selected.drawerQuote);
     setMany(".curtain-pane .pane-tag, .curtain-pane .pane-title, .curtain-pane .pane-desc", [selected.curtain[0], selected.curtain[1], selected.curtain[2], selected.curtain[5], selected.curtain[6], selected.curtain[7]]);
@@ -97,7 +129,7 @@
     setText(".big-quote p", selected.quote);
     setText("#camino-combate h2", selected.gameTitle);
     setText("#camino-combate .section-intro", selected.gameIntro);
-    setText("#camino-combate .score-label", theme === "jojo" ? "Stand Power:" : "Puntaje:");
+    setText("#camino-combate .score-label", theme === "jojo" ? "Stand Power:" : theme === "frieren" ? "Mana:" : "Puntaje:");
     setText("#camino-combate .crossy-result-card h3", theme === "jojo" ? "¡ORA ORA ORA!" : "¡Alto en el camino!");
     const crossyGame = document.getElementById("crossyGameWrap");
     const jojoGame = document.getElementById("jojoGameWrap");
@@ -106,8 +138,8 @@
       jojoGame.hidden = theme !== "jojo";
     }
     window.dispatchEvent(new CustomEvent("battle-theme-change", { detail: { theme } }));
-    document.querySelector('[data-target="sceneDioOverdrive"]')?.click();
-    if (theme === "kill") document.querySelector('[data-target="sceneKillLaKill"]')?.click();
+    if (theme === "jojo") document.querySelector('[data-target="sceneDioOverdrive"]')?.click();
+    else document.querySelector('[data-target="sceneKillLaKill"]')?.click();
 
     if (theme === "jojo" && announce) {
       fx.innerHTML = "<strong>KONO DIO DA!</strong><span>THE WORLD</span>";

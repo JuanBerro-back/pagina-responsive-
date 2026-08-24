@@ -2134,8 +2134,53 @@ a { color: var(--accent2); }
 .theme-jojo .hero-title em { color: #d9b2ff; text-shadow: 7px 7px 0 #7c28d8; }
 .theme-jojo .theme-button.is-active { background: #7c28d8; border-color: #d9b2ff; }
 .theme-jojo .dio-preview { border-color: #d9b2ff; box-shadow: 5px 5px 0 #7c28d8; }
+.theme-frieren {
+  --accent1: #91b9a1;
+  --accent2: #c9a76b;
+  --fondo: #101b1c;
+  --fondo-alt: #172527;
+  --fondo-card: #203234;
+  --tinta-muted: #b9c9c3;
+  background-image: linear-gradient(180deg, rgba(129, 177, 157, 0.08), transparent 36%), repeating-linear-gradient(105deg, transparent 0 84px, rgba(201, 167, 107, 0.035) 85px, transparent 86px);
+}
+.theme-frieren .hero,
+.theme-frieren .anime-section { background: radial-gradient(650px 420px at 72% 15%, rgba(143, 190, 168, 0.2), transparent 70%), #101b1c; }
+.theme-frieren .hero-title em { color: #c9a76b; text-shadow: 5px 5px 0 #496d62; }
+.theme-frieren .theme-button.is-active { background: #496d62; border-color: #c9a76b; }
+.theme-frieren .dio-preview { border-color: #c9a76b; box-shadow: 5px 5px 0 #496d62; }
+.theme-frieren .curtain-left { background: linear-gradient(135deg, #1c3530, #101b1c 70%); border-right-color: #91b9a1; }
+.theme-frieren .curtain-right { background: linear-gradient(225deg, #3a3020, #101b1c 70%); border-left-color: #c9a76b; }
+.theme-frieren .scene-cut-btn.is-active { background: #496d62; border-color: #c9a76b; box-shadow: 7px 7px 0 #c9a76b; }
+.theme-frieren #wind { opacity: 0.8; }
+.theme-frieren .section-alt { background-image: linear-gradient(135deg, rgba(145, 185, 161, 0.07) 0 1px, transparent 1px 100%); }
+.theme-frieren .hero::after {
+  opacity: 0.7;
+  background: repeating-linear-gradient(166deg, transparent 0 58px, rgba(201, 167, 107, 0.08) 59px 60px, transparent 61px 118px);
+  animation: frierenWind 14s linear infinite;
+}
+.theme-frieren .curtain-pane::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 28%;
+  opacity: 0.35;
+  background: repeating-linear-gradient(78deg, transparent 0 12px, rgba(145, 185, 161, 0.45) 13px 15px, transparent 16px 25px);
+  transform-origin: bottom;
+  animation: frierenGrass 4.5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes frierenWind {
+  from { background-position: 0 0; }
+  to { background-position: 180px 80px; }
+}
+@keyframes frierenGrass {
+  from { transform: skewX(-3deg); }
+  to { transform: skewX(3deg); }
+}
 .global-kanji-fx strong { display: block; color: #fff; font: 900 clamp(3rem, 10vw, 8rem)/0.9 var(--title1); text-shadow: 7px 7px 0 #7c28d8; white-space: nowrap; }
 .global-kanji-fx span { margin-top: 1rem; padding: 0.25rem 0.8rem; background: #000; color: #d9b2ff; font: 700 1rem var(--f-ui); letter-spacing: 0.25em; }
+.theme-frieren .global-kanji-fx strong { color: #c9a76b; text-shadow: 5px 5px 0 #496d62; }
+.theme-frieren .global-kanji-fx span { color: #91b9a1; }
 
 #camino-combate > .container {
   text-align: center;
