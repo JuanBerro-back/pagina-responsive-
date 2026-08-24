@@ -105,6 +105,7 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
+img[loading="lazy"] { content-visibility: auto; }
 
 h1, h2, h3 { font-family: var(--f-display); line-height: 1.15; color: #fff; }
 h2 { font-size: var(--fs-h2); font-weight: 900; margin-bottom: 0.5em; }
@@ -2174,7 +2175,10 @@ a { color: var(--accent2); }
 .jojo-game-container iframe {
   display: block;
   width: 100%;
-  height: clamp(420px, 60vw, 550px);
+  height: auto;
+  aspect-ratio: 16 / 9;
+  min-height: 420px;
+  max-height: 550px;
   border: 1px solid rgba(217, 178, 255, 0.6);
   background: #000;
 }
@@ -2193,7 +2197,7 @@ a { color: var(--accent2); }
     outline-offset: 5px;
     box-shadow: 8px 8px 0 #161026, 0 0 28px rgba(124, 40, 216, 0.32);
   }
-  .jojo-game-container iframe { height: 430px; }
+  .jojo-game-container iframe { height: 430px; min-height: 0; }
   .theme-controls { align-items: stretch; }
   .theme-button, .dio-upload { flex: 1 1 auto; text-align: center; }
   .dio-preview { right: 0.5rem; bottom: -4.5rem; }

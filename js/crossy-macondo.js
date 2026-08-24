@@ -519,10 +519,11 @@
       alpha: true,
       antialias: true
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const isCompactScreen = window.matchMedia("(max-width: 640px)").matches;
+    renderer.setPixelRatio(isCompactScreen ? 1 : Math.min(window.devicePixelRatio, 2));
     const { width: initW, height: initH } = getContainerDimensions();
     renderer.setSize(initW, initH);
-    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.enabled = !isCompactScreen;
 
     function onResize() {
       if (!container || !renderer) return;
