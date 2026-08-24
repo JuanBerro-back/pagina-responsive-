@@ -7,6 +7,7 @@
 
   const content = {
     kill: {
+      pageTitle: "Kill la Kill · Battle Archive",
       heroEyebrow: "Academia Honnouji · Distrito de la élite",
       heroTitle: "KILL LA <em>KILL</em>",
       heroSub: "Ryuko Matoi llega con una tijera escarlata para cortar las mentiras, desafiar a la élite y recuperar la verdad sobre su padre.",
@@ -37,6 +38,7 @@
       scenePrimary: ["Fibras Vivas · Kamui Senketsu · Tijera Rending", "Kill la Kill: La Rebelión Textil de la Tijera Escarlata", "Una batalla de tijeras, uniformes y voluntad contra el sistema que viste al mundo."]
     },
     jojo: {
+      pageTitle: "JoJo's Bizarre Adventure · Battle Archive",
       heroEyebrow: "Egipto · 1988 · El destino se acerca",
       heroTitle: "JOJO'S <em>BIZARRE</em> ADVENTURE",
       heroSub: "Jotaro Kujo y sus aliados cruzan el mundo para detener a DIO. El tiempo, la voluntad y los Stands chocan en una batalla imposible.",
@@ -67,6 +69,7 @@
       scenePrimary: ["Stand: Star Platinum · The World", "Jotaro Kujo: La voluntad que atraviesa el tiempo", "DIO desafía a los Joestar con The World, un Stand capaz de congelar el tiempo y convertir cada segundo en una amenaza."]
     },
     frieren: {
+      pageTitle: "Frieren · Beyond Journey's End",
       heroEyebrow: "Continente · Después del viaje · Magia antigua",
       heroTitle: "FRIEREN <em>BEYOND JOURNEY'S END</em>",
       heroSub: "La maga elfa continúa viajando después de derrotar al Rey Demonio, aprendiendo que una vida larga también está hecha de pequeños encuentros.",
@@ -113,6 +116,7 @@
 
   function applyTheme(theme, announce) {
     const selected = content[theme];
+    document.title = selected.pageTitle;
     document.body.classList.toggle("theme-jojo", theme === "jojo");
     document.body.classList.toggle("theme-frieren", theme === "frieren");
     buttons.forEach((button) => {

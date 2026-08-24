@@ -26,21 +26,21 @@
 
         osc.type = "sawtooth";
         osc.frequency.setValueAtTime(900, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(70, audioCtx.currentTime + 0.25);
+        osc.frequency.exponentialRampToValueAtTime(70, audioCtx.currentTime + 0.55);
 
         filter.type = "lowpass";
         filter.frequency.setValueAtTime(3200, audioCtx.currentTime);
-        filter.frequency.linearRampToValueAtTime(250, audioCtx.currentTime + 0.25);
+        filter.frequency.linearRampToValueAtTime(250, audioCtx.currentTime + 0.55);
 
         gain.gain.setValueAtTime(0.28, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.26);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.56);
 
         osc.connect(filter);
         filter.connect(gain);
         gain.connect(audioCtx.destination);
 
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.26);
+        osc.stop(audioCtx.currentTime + 0.56);
       } catch (e) {
         // En caso de que el navegador limite la reproducción previa
       }
@@ -64,7 +64,7 @@
         globalSlashOverlay.classList.remove("is-slashing");
         void globalSlashOverlay.offsetWidth;
         globalSlashOverlay.classList.add("is-slashing");
-        setTimeout(() => globalSlashOverlay.classList.remove("is-slashing"), 450);
+        setTimeout(() => globalSlashOverlay.classList.remove("is-slashing"), 2500);
       }
 
       // 2. Mensaje breve de transición.
@@ -74,19 +74,19 @@
         globalKanjiFx.classList.remove("is-active");
         void globalKanjiFx.offsetWidth;
         globalKanjiFx.classList.add("is-active");
-        setTimeout(() => globalKanjiFx.classList.remove("is-active"), 650);
+        setTimeout(() => globalKanjiFx.classList.remove("is-active"), 1600);
       }
 
       // 3. Vibración de pantalla tipo cómic
       document.body.classList.remove("screen-slash-shake");
       void document.body.offsetWidth;
       document.body.classList.add("screen-slash-shake");
-      setTimeout(() => document.body.classList.remove("screen-slash-shake"), 300);
+      setTimeout(() => document.body.classList.remove("screen-slash-shake"), 700);
 
       // 4. Indicador To Be Continued
       if (tobeCont) {
         tobeCont.classList.add("is-spin");
-        setTimeout(() => tobeCont.classList.remove("is-spin"), 600);
+        setTimeout(() => tobeCont.classList.remove("is-spin"), 1200);
       }
     }
 
@@ -150,7 +150,7 @@
               panel.setAttribute("hidden", "true");
             }
           });
-        }, 80);
+        }, 160);
       });
     });
 

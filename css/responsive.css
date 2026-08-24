@@ -79,8 +79,8 @@
   --radius: 12px;
   --gap: clamp(1.25rem, 3vw, 2.5rem);
   --shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
-  --transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  --transitionQuick: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  --transitionQuick: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ---------- 2. Reset y base global ---------- */
@@ -857,7 +857,7 @@ a:hover { color: var(--accent1); }
   color: var(--accent2);
   z-index: 4;
   pointer-events: none;
-  animation: hintBounce 2s infinite ease-in-out;
+  animation: hintBounce 4s infinite ease-in-out;
 }
 @keyframes hintBounce {
   0%, 100% { transform: translate(-50%, 0); }
@@ -1038,7 +1038,7 @@ a:hover { color: var(--accent1); }
   opacity: 0;
 }
 .global-slash-overlay.is-slashing {
-  animation: fantasyClouds 1.05s ease-in-out forwards;
+  animation: fantasyClouds 2.4s ease-in-out forwards;
 }
 @keyframes fantasyClouds {
   0% { opacity: 0; transform: scaleX(0.2); background: radial-gradient(ellipse at 15% 50%, #eef6f0 0 18%, transparent 45%), radial-gradient(ellipse at 85% 50%, #d9e8df 0 18%, transparent 45%); }
@@ -1079,7 +1079,7 @@ a:hover { color: var(--accent1); }
   text-align: center;
 }
 .global-kanji-fx.is-active {
-  animation: kanjiSlamGlobal 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: kanjiSlamGlobal 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 @keyframes kanjiSlamGlobal {
   0% {
@@ -1102,7 +1102,7 @@ a:hover { color: var(--accent1); }
 
 /* Vibración de Pantalla (Camera Shake) */
 .screen-slash-shake {
-  animation: screenShakeFx 0.28s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: screenShakeFx 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 @keyframes screenShakeFx {
   10%, 90% { transform: translate3d(-2px, -2px, 0); }
@@ -1120,7 +1120,7 @@ a:hover { color: var(--accent1); }
   opacity: 0;
 }
 .scene-slash-overlay.is-slashing {
-  animation: globalAnimeSlashCut 0.35s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+  animation: globalAnimeSlashCut 0.8s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
 }
 
 /* Kanji Pop-in FX (JoJo's / Kill la Kill Onomatopeya Local) */
@@ -1138,7 +1138,7 @@ a:hover { color: var(--accent1); }
   text-align: center;
 }
 .kanji-pop-fx.is-active {
-  animation: kanjiSlamGlobal 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: kanjiSlamGlobal 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 .kanji-main {
   font-family: var(--title1);
@@ -1242,7 +1242,7 @@ a:hover { color: var(--accent1); }
   padding: clamp(1.5rem, 4vw, 2.5rem);
   box-shadow: var(--shadow);
   display: block;
-  animation: sceneFadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: sceneFadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .scene-panel[hidden] {
   display: none;
@@ -1298,7 +1298,7 @@ a:hover { color: var(--accent1); }
 .klk-scissor-art, .sbr-spin-art, .climax-butterfly-art {
   font-size: 4rem;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
-  animation: floatArt 3s ease-in-out infinite;
+  animation: floatArt 5s ease-in-out infinite;
 }
 @keyframes floatArt {
   0%, 100% { transform: translateY(0); }
@@ -1413,7 +1413,7 @@ a:hover { color: var(--accent1); }
   box-shadow: 6px 6px 0px var(--accent1);
 }
 .jojo-tobe-arrow.is-spin {
-  animation: jojoSpin 0.5s ease;
+  animation: jojoSpin 0.9s ease;
 }
 @keyframes jojoSpin {
   0% { transform: scale(1) rotate(0deg); }
@@ -1518,7 +1518,7 @@ a:hover { color: var(--accent1); }
   background: none;
   cursor: pointer;
   perspective: 900px;
-  animation: card-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: card-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @keyframes card-in {
   from { opacity: 0; transform: translateY(24px) scale(0.92); }
@@ -1682,7 +1682,7 @@ a:hover { color: var(--accent1); }
   align-items: center;
   justify-content: center;
   z-index: 20;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.6s ease;
 }
 .crossy-result-modal[hidden] {
   display: none;
@@ -2162,7 +2162,7 @@ a { color: var(--accent2); }
 .theme-frieren .hero::after {
   opacity: 0.7;
   background: repeating-linear-gradient(166deg, transparent 0 58px, rgba(201, 167, 107, 0.08) 59px 60px, transparent 61px 118px);
-  animation: frierenWind 14s linear infinite;
+  animation: frierenWind 24s linear infinite;
 }
 .theme-frieren .curtain-pane::after {
   content: '';
@@ -2172,7 +2172,7 @@ a { color: var(--accent2); }
   opacity: 0.35;
   background: repeating-linear-gradient(78deg, transparent 0 12px, rgba(145, 185, 161, 0.45) 13px 15px, transparent 16px 25px);
   transform-origin: bottom;
-  animation: frierenGrass 4.5s ease-in-out infinite alternate;
+  animation: frierenGrass 8s ease-in-out infinite alternate;
   pointer-events: none;
 }
 @keyframes frierenWind {
